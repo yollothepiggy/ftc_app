@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class test extends LinearOpMode
 
 {
-    DcMotor leftMotor, rightMotor;
+    DcMotor leftMotor, rightMotor, armMotor;
     double lefts, rights;
 
     @Override
@@ -22,6 +22,7 @@ public class test extends LinearOpMode
         //First Hub
         leftMotor = hardwareMap.dcMotor.get("leftMotor");
         rightMotor = hardwareMap.dcMotor.get("rightMotor");
+        armMotor = hardwareMap.dcMotor.get("armMotor");
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
 
         telemetry.addData("mode", "waiting");
@@ -41,13 +42,18 @@ public class test extends LinearOpMode
             lefts = gamepad1.left_stick_y;
             rights = gamepad1.right_stick_y;
 
-
-
             leftMotor.setPower(Range.clip(-lefts, -.50, .75));
+            rightMotor.setPower(Range.clip(-rights, -.50, .75));
             telemetry.addData("Left Motor", leftMotor.getPower());
             telemetry.addData("Right Motor", rightMotor.getPower());
             telemetry.update();
-            rightMotor.setPower(Range.clip(-rights, -.50, .75));
+
+            
+
+
+
+
+
 
 
 
