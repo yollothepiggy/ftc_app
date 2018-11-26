@@ -48,7 +48,7 @@ public class test extends LinearOpMode
             telemetry.addData("Right Motor", rightMotor.getPower());
             telemetry.update();
 
-            
+
 
 
 
