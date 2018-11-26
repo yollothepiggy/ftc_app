@@ -22,7 +22,6 @@ public class test extends LinearOpMode
         //First Hub
         leftMotor = hardwareMap.dcMotor.get("leftMotor");
         rightMotor = hardwareMap.dcMotor.get("rightMotor");
-        armMotor = hardwareMap.dcMotor.get("armMotor");
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
 
         telemetry.addData("mode", "waiting");
