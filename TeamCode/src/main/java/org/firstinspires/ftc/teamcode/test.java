@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.hardware.Servo;
 
-
 @TeleOp(name="OFFICIAL TeleOp", group="Exercises")
 
 //@Disabled
@@ -14,7 +13,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class test extends LinearOpMode
 
 {
-    DcMotor leftMotor, rightMotor, armMotor;
+    DcMotor leftMotor, rightMotor, ArmLift, ArmExtend, liftMotor;
     double lefts, rights;
 
     @Override
