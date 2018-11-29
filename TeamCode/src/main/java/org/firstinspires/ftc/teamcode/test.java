@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class test extends LinearOpMode
 
 {
-    DcMotor leftMotor, rightMotor, ArmLift, ArmExtend, liftMotor;
+    DcMotor leftMotor, rightMotor, armLift, armExtend, liftMotor;
     double lefts, rights;
 
     @Override
@@ -21,8 +21,16 @@ public class test extends LinearOpMode
         //First Hub
         leftMotor = hardwareMap.dcMotor.get("leftMotor");
         rightMotor = hardwareMap.dcMotor.get("rightMotor");
+        armLift = hardwareMap.dcMotor.get("armlift");
+        liftMotor = hardwareMap.dcMotor.get("liftMotor");
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
 
+
+        //Second Hub
+        armExtend= hardwareMap.dcMotor.get("armExtend");
+
+
+        
         telemetry.addData("mode", "waiting");
         telemetry.update();
 
