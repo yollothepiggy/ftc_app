@@ -30,7 +30,7 @@ public class test extends LinearOpMode
         armExtend= hardwareMap.dcMotor.get("armExtend");
 
 
-        
+
         telemetry.addData("mode", "waiting");
         telemetry.update();
 
