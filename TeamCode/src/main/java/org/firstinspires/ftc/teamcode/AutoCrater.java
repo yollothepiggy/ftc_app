@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@Autonomous(name="OFFICIAL TeleOp", group="Exercises")
+@Autonomous(name="OFFICIAL AUTO", group="Exercises")
 /**
  * Created by mendezis on 11/28/2018.
  */

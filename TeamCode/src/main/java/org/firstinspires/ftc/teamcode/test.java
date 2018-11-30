@@ -13,21 +13,21 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class test extends LinearOpMode
 
 {
-    DcMotor leftMotor, rightMotor, armLift, armExtend, liftMotor;
-    double lefts, rights;
+    DcMotor leftMotor, rightMotor, armLift1,armLift2, armExtend, liftMotor;
+    double lefts, rights, lifts, extend ;
 
     @Override
     public void runOpMode() {
         //First Hub
         leftMotor = hardwareMap.dcMotor.get("leftMotor");
         rightMotor = hardwareMap.dcMotor.get("rightMotor");
-        armLift = hardwareMap.dcMotor.get("armlift");
-        liftMotor = hardwareMap.dcMotor.get("liftMotor");
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
-
+        armLift1 = hardwareMap.dcMotor.get("armLift1");
+        armLift2 = hardwareMap.dcMotor.get("armLift2");
 
         //Second Hub
-        armExtend= hardwareMap.dcMotor.get("armExtend");
+        liftMotor = hardwareMap.dcMotor.get("liftMotor");
+        armExtend = hardwareMap.dcMotor.get("liftMotor");
 
 
 
@@ -50,6 +50,7 @@ public class test extends LinearOpMode
 
             leftMotor.setPower(Range.clip(-lefts, -.50, .75));
             rightMotor.setPower(Range.clip(-rights, -.50, .75));
+
             telemetry.addData("Left Motor", leftMotor.getPower());
             telemetry.addData("Right Motor", rightMotor.getPower());
             telemetry.update();
@@ -57,6 +58,36 @@ public class test extends LinearOpMode
 
 
 
+            // Gamepad 2 controls
+            lifts = gamepad2.right_stick_y;
+            extend = gamepad2.left_stick_y;
+
+            armLift1.setPower(Range.clip(-lifts, -.25, .25));
+            armLift2.setPower(Range.clip(-lifts, -.25, .25));
+            armExtend.setPower(Range.clip(-extend, -.25, .25));
+
+            telemetry.addData("Arm Motor 1", armLift1.getPower());
+            telemetry.addData("Arm Motor 2", armLift2.getPower());
+            telemetry.addData("Claw Motor", armExtend.getPower());
+            telemetry.update();
+
+
+
+
+            if ( gamepad2.dpad_up)
+            {
+                liftMotor.setPower(.25);
+            }
+
+            if ( gamepad2.b)
+            {
+                liftMotor.setPower(0);
+            }
+
+            if ( gamepad2.dpad_down)
+            {
+                liftMotor.setPower(-.25);
+            }
 
 
 
