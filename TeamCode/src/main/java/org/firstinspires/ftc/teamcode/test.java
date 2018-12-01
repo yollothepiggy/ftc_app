@@ -27,7 +27,7 @@ public class test extends LinearOpMode
 
         //Second Hub
         liftMotor = hardwareMap.dcMotor.get("liftMotor");
-        armExtend = hardwareMap.dcMotor.get("liftMotor");
+        armExtend = hardwareMap.dcMotor.get("armExtender");
 
 
 
