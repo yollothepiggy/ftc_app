@@ -13,8 +13,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class test extends LinearOpMode
 
 {
-    DcMotor leftMotor, rightMotor, armLift1,armLift2, armExtend, liftMotor;
-    double lefts, rights, lifts, extend ;
+    DcMotor leftMotor, rightMotor, liftMotor;
+    double lefts, rights;
 
     @Override
     public void runOpMode() {
@@ -22,12 +22,11 @@ public class test extends LinearOpMode
         leftMotor = hardwareMap.dcMotor.get("leftMotor");
         rightMotor = hardwareMap.dcMotor.get("rightMotor");
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
-        armLift1 = hardwareMap.dcMotor.get("armLift1");
-        armLift2 = hardwareMap.dcMotor.get("armLift2");
+
 
         //Second Hub
         liftMotor = hardwareMap.dcMotor.get("liftMotor");
-        armExtend = hardwareMap.dcMotor.get("armExtender");
+
 
 
 
@@ -58,35 +57,22 @@ public class test extends LinearOpMode
 
 
 
-            // Gamepad 2 controls
-            lifts = gamepad2.right_stick_y;
-            extend = gamepad2.left_stick_y;
-
-            armLift1.setPower(Range.clip(-lifts, -.25, .25));
-            armLift2.setPower(Range.clip(-lifts, -.25, .25));
-            armExtend.setPower(Range.clip(-extend, -.25, .25));
-
-            telemetry.addData("Arm Motor 1", armLift1.getPower());
-            telemetry.addData("Arm Motor 2", armLift2.getPower());
-            telemetry.addData("Claw Motor", armExtend.getPower());
-            telemetry.update();
+           
 
 
-
-
-            if ( gamepad2.dpad_up)
+            if ( gamepad1.dpad_up)
             {
-                liftMotor.setPower(.25);
+                liftMotor.setPower(.60);
             }
 
-            if ( gamepad2.b)
+            if ( gamepad1.b)
             {
                 liftMotor.setPower(0);
             }
 
-            if ( gamepad2.dpad_down)
+            if ( gamepad1.dpad_down)
             {
-                liftMotor.setPower(-.25);
+                liftMotor.setPower(-.30);
             }
 
 

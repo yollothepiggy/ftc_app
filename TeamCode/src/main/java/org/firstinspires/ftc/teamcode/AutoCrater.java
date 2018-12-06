@@ -11,10 +11,30 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by mendezis on 11/28/2018.
  */
 
+
 public class AutoCrater extends LinearOpMode {
+
+    DcMotor leftMotor, rightMotor, liftMotor;
 
     public void runOpMode()
     {
+
+        //First Hub
+        leftMotor = hardwareMap.dcMotor.get("leftMotor");
+        rightMotor = hardwareMap.dcMotor.get("rightMotor");
+        leftMotor.setDirection(DcMotor.Direction.REVERSE);
+        liftMotor = hardwareMap.dcMotor.get("liftMotor");
+
+        waitForStart();
+
+        sleep(2500);
+
+        liftMotor.setPower(.5);
+        sleep(2000);
+
+        leftMotor.setPower(.45);
+        rightMotor.setPower(-.45);
+        sleep(2000);
 
     }
 }
