@@ -75,7 +75,7 @@ public class test extends LinearOpMode
 
             if ( gamepad1.dpad_up)
             {
-                liftMotor.setPower(.60);
+                liftMotor.setPower(.70);
             }
 
             if ( gamepad1.b)
