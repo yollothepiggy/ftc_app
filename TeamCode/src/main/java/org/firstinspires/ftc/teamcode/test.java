@@ -57,7 +57,20 @@ public class test extends LinearOpMode
 
 
 
-           
+            // Gamepad 2 controls
+           // lifts = gamepad2.right_stick_y;
+           // extend = gamepad2.left_stick_y;
+
+            //armLift1.setPower(Range.clip(-lifts, -.50, .75));
+            //armLift2.setPower(Range.clip(-lifts, -.50, .75));
+            //armExtend.setPower(Range.clip(-extend, -.60, .75));
+
+           /* telemetry.addData("Arm Motor 1", armLift1.getPower());
+            telemetry.addData("Arm Motor 2", armLift2.getPower());
+            telemetry.addData("Claw Motor", armExtend.getPower());
+            telemetry.update();
+*/
+
 
 
             if ( gamepad1.dpad_up)
