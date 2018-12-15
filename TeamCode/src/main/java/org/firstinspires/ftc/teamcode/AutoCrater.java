@@ -30,7 +30,7 @@ public class AutoCrater extends LinearOpMode {
         sleep(2500);
 
         liftMotor.setPower(.5);
-        sleep(3000);
+        sleep(1700);
 
 
         liftMotor.setPower(0);
