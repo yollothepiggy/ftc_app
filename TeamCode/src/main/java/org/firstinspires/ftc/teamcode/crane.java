@@ -42,10 +42,23 @@ public class crane extends LinearOpMode
             droppers = gamepad1.right_stick_y;
 
             rotation.setPower(Range.clip(-rotations, -.20, .20));
-            main.setPower(Range.clip(-mains, -.20, .20));
-            brace.setPower(Range.clip(mains, -.20, .20));
-            dropper.setPower(Range.clip(-droppers, -.20, .20));
+            main.setPower(Range.clip(-mains, -.20, .50));
+            dropper.setPower(Range.clip(-droppers, -.40, .50));
 
+            while (gamepad1.dpad_left)
+            {
+            brace.setPower(-.35);
+            }
+
+            if (gamepad1.b)
+            {
+                brace.setPower(0);
+            }
+
+            while (gamepad1.dpad_right)
+            {
+                brace.setPower(.35);
+            }
 
             //abcdefghijklmnopqrstuvwxyz
         }
