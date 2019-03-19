@@ -13,8 +13,8 @@ import com.qualcomm.robotcore.util.Range;
 public class crane extends LinearOpMode
 
 {
-    DcMotor rotation, main, brace, dropper;
-    double rotations, mains, droppers;
+    DcMotor rotation, main, brace, dropper,leftMotor, rightMotor;
+    double rotations, mains, droppers, lefts, rights;
 
     @Override
     public void runOpMode() {
@@ -22,6 +22,11 @@ public class crane extends LinearOpMode
         main = hardwareMap.dcMotor.get("main");
         brace = hardwareMap.dcMotor.get("brace");
         dropper = hardwareMap.dcMotor.get("dropper");
+        leftMotor = hardwareMap.dcMotor.get("leftMotor");
+        rightMotor = hardwareMap.dcMotor.get("rightMotor");
+        leftMotor.setDirection(DcMotor.Direction.REVERSE);
+
+
 
         telemetry.addData("mode", "waiting");
         telemetry.update();
@@ -38,29 +43,42 @@ public class crane extends LinearOpMode
             // Gamepad 1 controls
 
             rotations = gamepad1.left_stick_x;
-            mains = gamepad1.left_stick_y;
             droppers = gamepad1.right_stick_y;
-
             rotation.setPower(Range.clip(-rotations, -.20, .20));
-            main.setPower(Range.clip(-mains, -.20, .50));
             dropper.setPower(Range.clip(-droppers, -.40, .50));
 
-            while (gamepad1.dpad_left)
+            if (gamepad1.dpad_left)
             {
-            brace.setPower(-.35);
+            main.setPower(-.35);
             }
 
             if (gamepad1.b)
             {
+                main.setPower(0);
                 brace.setPower(0);
             }
 
-            while (gamepad1.dpad_right)
+            if (gamepad1.dpad_right)
+            {
+                main.setPower(.35);
+            }
+
+            if (gamepad1.dpad_up)
             {
                 brace.setPower(.35);
             }
 
-            //abcdefghijklmnopqrstuvwxyz
+            if (gamepad1.dpad_down)
+            {
+                brace.setPower(-.35);
+            }
+
+            lefts = gamepad2.left_stick_y;
+            rights = gamepad2.right_stick_y;
+
+            leftMotor.setPower(Range.clip(-lefts, -.50, .50));
+            rightMotor.setPower(Range.clip(-rights, -.50, .50));
+
         }
     }
 }

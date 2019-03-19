@@ -50,7 +50,7 @@ public class test extends LinearOpMode
             leftMotor.setPower(Range.clip(-lefts, -.50, .75));
             rightMotor.setPower(Range.clip(-rights, -.50, .75));
 
-            telemetry.addData("Left Motor", leftMotor.getPower());
+              telemetry.addData("Left Motor", leftMotor.getPower());
             telemetry.addData("Right Motor", rightMotor.getPower());
             telemetry.update();
 
