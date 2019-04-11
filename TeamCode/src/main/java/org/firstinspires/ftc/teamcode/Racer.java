@@ -22,6 +22,13 @@ public class Racer extends LinearOpMode
         rightMotor = hardwareMap.dcMotor.get("rightMotor");
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
 
+        telemetry.addData("mode", "waiting");
+        telemetry.update();
+
+        waitForStart();
+
+        telemetry.addData("mode", "Active");
+        telemetry.update();
 
         while (opModeIsActive())
 
@@ -30,12 +37,13 @@ public class Racer extends LinearOpMode
             lefts = gamepad1.left_stick_y;
             rights = gamepad1.right_stick_y;
 
-            leftMotor.setPower(Range.clip(-lefts, -.50, .75));
-            rightMotor.setPower(Range.clip(-rights, -.50, .75));
+            leftMotor.setPower(-Range.clip(-lefts, -.50, 1));
+            rightMotor.setPower(-Range.clip(-rights, -.50, 1));
 
             telemetry.addData("Left Motor", leftMotor.getPower());
             telemetry.addData("Right Motor", rightMotor.getPower());
             telemetry.update();
+
         }
     }
 }
